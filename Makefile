@@ -18,3 +18,5 @@ syncdb:
 migrate:
 	$(ENTER_VENV); python manage.py migrate tv --settings=listings.dev
 
+create_listings:
+	$(ENTER_VENV); python manage.py create_listings --settings=listings.dev
