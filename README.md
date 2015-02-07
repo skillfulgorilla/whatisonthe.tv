@@ -1,6 +1,8 @@
-# app
+# whatisonthe.tv 
 
 **what·isonthetv**  */ˈwhatˌisonthetv/*
+
+[ ![Codeship Status for swmcc/whatisonthe.tv](https://codeship.com/projects/11a1b900-8f7f-0132-6404-6add16588dd2/status?branch=master)](https://codeship.com/projects/61263)
 
 *Noun:*  
 Sample django app that allows me to play with other tech.
