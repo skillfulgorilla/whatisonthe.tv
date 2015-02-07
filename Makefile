@@ -13,7 +13,7 @@ migrations:
 	$(ENTER_VENV); python manage.py makemigrations tv --settings=listings.dev
 
 syncdb:
-	 $(ENTER_VENV); python manage.py syncdb tv --settings=listings.dev
+	 $(ENTER_VENV); python manage.py syncdb --settings=listings.dev
 
 migrate:
 	$(ENTER_VENV); python manage.py migrate tv --settings=listings.dev
