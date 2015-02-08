@@ -4,4 +4,4 @@ class Command(BaseCommand):
     help = "Get the xml and whack it into the db"
 
     def handle(self, *args, **options):
-        print "Hi"
+        return "Hi"
