@@ -55,8 +55,7 @@ class Command(BaseCommand):
     help = "Get the xml and whack it into the db"
 
     def handle(self, *args, **options):
-        for element in xmltv.read_programmes(open(filename, 'r')):
-            information = retrieve_information(element)
+#        for element in xmltv.read_programmes(open(filename, 'r')):
+#            information = retrieve_information(element)
 
-            print information
         return 'Hi' 
