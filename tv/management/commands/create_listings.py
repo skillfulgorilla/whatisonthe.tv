@@ -5,7 +5,7 @@ import datetime, xmltv
 from operator import itemgetter
 from collections import namedtuple
 
-filename = '/Users/swm/Sandbox/tv/tv.xml'
+filename = 'tv.xml'
     
 Channel = namedtuple('Channel', [
     'id', 'name', 'icon'
