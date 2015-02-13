@@ -21,3 +21,6 @@ migrate:
 
 create_listings:
 	$(ENTER_VENV); python manage.py create_listings --settings=listings.dev
+
+open_coverage:
+	open cover/index.html 
