@@ -5,8 +5,7 @@ pip:
 	export CFLAGS=-Qunused-arguments; export CPPFLAGS=-Qunused-arguments; 
 	$(ENTER_VENV); pip install -r requirements.txt
 run: 
-	$(ENTER_VENV); 
-	python manage.py runserver 0.0.0.0:8010 --settings=listings.dev
+	$(ENTER_VENV); python manage.py runserver 0.0.0.0:8010 --settings=listings.dev
 
 tests:
 	$(ENTER_VENV); python manage.py test tv --settings=listings.test 
