@@ -1,18 +1,18 @@
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
-import datetime, os.path, sys, xmltv
+import datetime, os, xmltv
 
 from operator import itemgetter
 from collections import namedtuple
 
-    
+
 Channel = namedtuple('Channel', [
     'id', 'name', 'icon'
 ])
 
 def _feed_exists():
-    if os.path.isfile(settings.XML_TV_LISTING_FEED): 
+    if os.path.isfile(settings.XML_TV_LISTING_FEED):
         return True
     else:
         return False
@@ -22,14 +22,14 @@ def channels():
     if _feed_exists():
         for key in xmltv.read_channels(open(settings.XML_TV_LISTING_FEED, 'r')):
             name = map(itemgetter(0), key['display-name'])
-            id   = key['id']
-            src  = key['icon'][0]['src']
+            id = key['id']
+            src = key['icon'][0]['src']
 
             rec = dict(zip(Channel._fields, [id, name[0], src]))
             channel = Channel(**rec)
             channels[channel.id] = channel
 
-    return channels 
+    return channels
 
 CHANNELS = channels()
 
@@ -44,7 +44,7 @@ def _retrieve_description(element):
     if 'desc' in element:
         desc = map(itemgetter(0), element['desc'])
         return desc[0]
-    return '' 
+    return ''
 
 def retrieve_information(element):
     return {
@@ -66,4 +66,4 @@ class Command(BaseCommand):
             for element in xmltv.read_programmes(open(settings.XML_TV_LISTING_FEED, 'r')):
                 information = retrieve_information(element)
 
-        return 'Hi' 
+        return 'Hi'

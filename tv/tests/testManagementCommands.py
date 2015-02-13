@@ -10,7 +10,7 @@ class testManagementCommand(TestCase):
         call_command('create_listings', stdout=out)
         self.assertIn('Hi', out.getvalue())
 
-    @override_settings(XML_TV_LISTING_FEED = '/somewhere/else/')
+    @override_settings(XML_TV_LISTING_FEED='/somewhere/else/')
     def testCreateListingsWithNoFile(self):
         out = StringIO()
         call_command('create_listings', stdout=out)
