@@ -24,3 +24,6 @@ create_listings:
 
 open_coverage:
 	open cover/index.html 
+
+pylint:
+	$(ENTER_VENV); pylint --rcfile=.pylintrc tv 
