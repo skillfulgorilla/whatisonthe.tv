@@ -2,3 +2,4 @@ venv
 *.pyc
 *.sw*
 db.sqlite3
+*.DS_Store
