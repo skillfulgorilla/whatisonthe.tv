@@ -66,4 +66,5 @@ class Command(BaseCommand):
             for element in xmltv.read_programmes(open(settings.XML_TV_LISTING_FEED, 'r')):
                 information = retrieve_information(element)
 
-        return 'Hi'
+        return 'Hi' 
+

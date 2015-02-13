@@ -14,5 +14,4 @@ class testManagementCommand(TestCase):
     def testCreateListingsWithNoFile(self):
         out = StringIO()
         call_command('create_listings', stdout=out)
-        print out.getvalue()
         self.assertIn('Hi', out.getvalue())
