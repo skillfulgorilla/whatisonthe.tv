@@ -1,21 +1,26 @@
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
-import datetime, sys, xmltv
+import datetime, os.path, sys, xmltv
 
 from operator import itemgetter
 from collections import namedtuple
 
-filename = settings.XML_TV_LISTING_FEED 
     
 Channel = namedtuple('Channel', [
     'id', 'name', 'icon'
 ])
 
+def _feed_exists():
+    if os.path.isfile(settings.XML_TV_LISTING_FEED): 
+        return True
+    else:
+        return False
+
 def channels():
     channels = {}
-    try:
-        for key in xmltv.read_channels(open(filename, 'r')):
+    if _feed_exists():
+        for key in xmltv.read_channels(open(settings.XML_TV_LISTING_FEED, 'r')):
             name = map(itemgetter(0), key['display-name'])
             id   = key['id']
             src  = key['icon'][0]['src']
@@ -23,9 +28,6 @@ def channels():
             rec = dict(zip(Channel._fields, [id, name[0], src]))
             channel = Channel(**rec)
             channels[channel.id] = channel
-    except IOError:
-        print('There was an error opening the file!')
-        sys.exit(0)
 
     return channels 
 
@@ -60,6 +62,8 @@ class Command(BaseCommand):
     help = "Get the xml and whack it into the db"
 
     def handle(self, *args, **options):
-#        for element in xmltv.read_programmes(open(filename, 'r')):
-#            information = retrieve_information(element)
+        if _feed_exists():
+            for element in xmltv.read_programmes(open(settings.XML_TV_LISTING_FEED, 'r')):
+                information = retrieve_information(element)
+
         return 'Hi' 
