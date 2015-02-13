@@ -11,3 +11,5 @@ DATABASES = {
 
 DEBUG = True 
 TEMPLATE_DEBUG = True
+
+XML_TV_LISTING_FEED = "/Users/swm/tv.xml"

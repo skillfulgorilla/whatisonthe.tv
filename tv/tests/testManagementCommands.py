@@ -4,7 +4,7 @@ from django.utils.six import StringIO
 
 # Create your tests here.
 
-class ManagementCommandTests(TestCase):
+class testManagementCommand(TestCase):
 
     def testCreateListings(self):
         out = StringIO()

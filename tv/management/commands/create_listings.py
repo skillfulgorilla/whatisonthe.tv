@@ -1,11 +1,12 @@
 from django.core.management.base import BaseCommand
+from django.conf import settings
 
-import datetime, xmltv
+import datetime, sys, xmltv
 
 from operator import itemgetter
 from collections import namedtuple
 
-filename = 'tv.xml'
+filename = settings.XML_TV_LISTING_FEED 
     
 Channel = namedtuple('Channel', [
     'id', 'name', 'icon'
@@ -13,14 +14,18 @@ Channel = namedtuple('Channel', [
 
 def channels():
     channels = {}
-    for key in xmltv.read_channels(open(filename, 'r')):
-        name = map(itemgetter(0), key['display-name'])
-        id   = key['id']
-        src  = key['icon'][0]['src']
+    try:
+        for key in xmltv.read_channels(open(filename, 'r')):
+            name = map(itemgetter(0), key['display-name'])
+            id   = key['id']
+            src  = key['icon'][0]['src']
 
-        rec = dict(zip(Channel._fields, [id, name[0], src]))
-        channel = Channel(**rec)
-        channels[channel.id] = channel
+            rec = dict(zip(Channel._fields, [id, name[0], src]))
+            channel = Channel(**rec)
+            channels[channel.id] = channel
+    except IOError:
+        print('There was an error opening the file!')
+        sys.exit(0)
 
     return channels 
 
@@ -57,5 +62,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 #        for element in xmltv.read_programmes(open(filename, 'r')):
 #            information = retrieve_information(element)
-
         return 'Hi' 
