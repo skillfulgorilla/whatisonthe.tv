@@ -21,6 +21,13 @@ At the minute a simple django app
 ```
 git clone https://github.com/swmcc/whatisonthe.tv.git 
 cd whatisonthe.tv 
-# install a venv - and see Makefile for my personal prefs
+virtualenv venv # if you install venv somewhere else or use mkvirtualenv then amend the Makefile accordingly
+make pip
+make run # starts a server locally on port 8010 
 ```
 
+## Testing
+
+```
+make tests
+```
