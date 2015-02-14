@@ -4,6 +4,7 @@ class Channel(models.Model):
 
     name = models.CharField(max_length=100)
     icon = models.CharField(max_length=100)
+    xml_id = models.CharField(max_length=100, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

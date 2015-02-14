@@ -5,11 +5,7 @@ import datetime, os, xmltv
 
 from operator import itemgetter
 from collections import namedtuple
-
-
-Channel = namedtuple('Channel', [
-    'id', 'name', 'icon'
-])
+from tv.models import Channel
 
 def _feed_exists():
     if os.path.isfile(settings.XML_TV_LISTING_FEED):
@@ -22,13 +18,11 @@ def channels():
     if _feed_exists():
         for key in xmltv.read_channels(open(settings.XML_TV_LISTING_FEED, 'r')):
             name = map(itemgetter(0), key['display-name'])
-            id = key['id']
+            xml_id = key['id']
             src = key['icon'][0]['src']
 
-            rec = dict(zip(Channel._fields, [id, name[0], src]))
-            channel = Channel(**rec)
-            channels[channel.id] = channel
-
+            channel, _ = Channel.objects.get_or_create(name=name,xml_id=xml_id,icon=src)
+            channels[channel.xml_id] = channel
     return channels
 
 CHANNELS = channels()
