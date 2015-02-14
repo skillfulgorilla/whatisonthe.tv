@@ -21,7 +21,7 @@ def channels():
             xml_id = key['id']
             src = key['icon'][0]['src']
 
-            channel, _ = Channel.objects.get_or_create(name=name,xml_id=xml_id,icon=src)
+            channel, _ = Channel.objects.get_or_create(name=name, xml_id=xml_id, icon=src)
             channels[channel.xml_id] = channel
     return channels
 
