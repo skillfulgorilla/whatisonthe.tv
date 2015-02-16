@@ -5,7 +5,7 @@ import datetime, os, xmltv
 
 from operator import itemgetter
 from collections import namedtuple
-from tv.models import Channel
+from tv.models import Channel, Programme
 
 def _feed_exists():
     if os.path.isfile(settings.XML_TV_LISTING_FEED):
@@ -64,6 +64,7 @@ class Command(BaseCommand):
         if _feed_exists():
             for element in xmltv.read_programmes(open(settings.XML_TV_LISTING_FEED, 'r')):
                 information = retrieve_information(element)
+                programme, _ = Programme.objects.get_or_create(title=information['title'])
 
         return 'Hi' 
 
