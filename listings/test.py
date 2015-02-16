@@ -3,15 +3,11 @@ from settings import *
 DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3', 'NAME': 'sfp.sqlite3'}
 
 INSTALLED_APPS += (
-    'django_nose',
+    'django_coverage',
 ) 
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+COVERAGE_REPORT_HTML_OUTPUT_DIR = 'cover'
 
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package=tv',
-    '--cover-html',
-]
+TEST_RUNNER = 'django_coverage.coverage_runner.CoverageRunner'
 
 XML_TV_LISTING_FEED = "tv/tests/fixtures/tv.xml"
