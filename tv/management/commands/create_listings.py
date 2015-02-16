@@ -13,11 +13,15 @@ def _feed_exists():
     else:
         return False
 
+def _retrieve_channel_name(element):
+    names = map(itemgetter(0), element['display-name'])
+    return names[0]
+
 def channels():
     channels = {}
     if _feed_exists():
         for key in xmltv.read_channels(open(settings.XML_TV_LISTING_FEED, 'r')):
-            name = map(itemgetter(0), key['display-name'])
+            name = _retrieve_channel_name(key) 
             xml_id = key['id']
             src = key['icon'][0]['src']
 
@@ -29,6 +33,7 @@ CHANNELS = channels()
 
 def _retrieve_channel(id):
     return CHANNELS[id]
+
 
 def _retrieve_title(element):
     titles = map(itemgetter(0), element['title'])
