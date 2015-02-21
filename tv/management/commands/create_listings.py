@@ -5,7 +5,7 @@ import datetime, os, xmltv
 
 from operator import itemgetter
 from collections import namedtuple
-from tv.models import Channel, Programme
+from tv.models import BroadCast, Channel, Programme
 
 def _feed_exists():
     if os.path.isfile(settings.XML_TV_LISTING_FEED):
@@ -39,7 +39,7 @@ def _retrieve_title(element):
     titles = map(itemgetter(0), element['title'])
     return titles[0]
 
-def _retrieve_description(element):
+def _retrieve_blurb(element):
     if 'desc' in element:
         desc = map(itemgetter(0), element['desc'])
         return desc[0]
@@ -48,10 +48,10 @@ def _retrieve_description(element):
 def retrieve_information(element):
     return {
         'channel': _retrieve_channel(element['channel']),
-        'description': _retrieve_description(element),
+        'blurb': _retrieve_blurb(element),
         'title': _retrieve_title(element),
-        'start': format_time(element['start']),
-        'stop': format_time(element['stop']),
+        'start_time': format_time(element['start']),
+        'end_time': format_time(element['stop']),
     }
 
 def format_time(timestamp):
@@ -65,6 +65,10 @@ class Command(BaseCommand):
             for element in xmltv.read_programmes(open(settings.XML_TV_LISTING_FEED, 'r')):
                 information = retrieve_information(element)
                 programme, _ = Programme.objects.get_or_create(title=information['title'])
+                del information['title']
+                information['programme'] = programme
+                broadcast = BroadCast(**information)
+                broadcast.save()
 
         return 'Hi' 
 
