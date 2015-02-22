@@ -19,6 +19,9 @@ syncdb:
 migrate:
 	$(ENTER_VENV); python manage.py migrate tv --settings=listings.settings.dev
 
+migrate.live:
+	$(ENTER_VENV); python manage.py migrate tv --settings=listings.settings.live
+
 create_listings:
 	$(ENTER_VENV); python manage.py create_listings --settings=listings.settings.dev
 
@@ -27,3 +30,5 @@ open_coverage:
 
 pylint:
 	$(ENTER_VENV); pylint --rcfile=.pylintrc tv 
+
+
