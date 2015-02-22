@@ -1,3 +1,4 @@
+from getenv import env
 from settings import *
 
 DATABASES = {
