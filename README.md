@@ -32,13 +32,15 @@ To me this is an old fashioned way of browsing and woefully ineffective. With th
 
 As a user I want to be able to do several things:
 
- ```Can I see at a glance all the films that Jack Nicholsan is starring in any given (reasonable) time frame?```
+ ```Can I see at a glance all the films that Jack Nicholson is starring in any given (reasonable) time frame?```
 
  ```Can I see any episodes that are going to air in the next two weeks of the X-Files that are related to the 'arc'?```
 
  ```Can I see any films that star Martin Sheen that were made between 1975-1982 and any guest star appearances in any TV show ever? And if not can I see this information anyway.```
 
  ```Can I browse by genre on all channels and then search on the synopsis. For example "startups".```
+
+ ```Can I see any episodes of Saturday Night Live that star Steve Martin?```
 
 ## Development Info
 
