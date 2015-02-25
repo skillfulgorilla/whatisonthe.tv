@@ -1,0 +1,9 @@
+server {
+    listen 80;
+    server_name whatisonthe.tv www.whatisonthe.tv;
+    root /var/www/www.whatisonthe.tv/;
+    index index.html index.htm;
+
+    location / {
+    }
+}
