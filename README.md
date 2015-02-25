@@ -12,7 +12,7 @@ A set for receiving television broadcasts.
 
 ## Description
 
-The webpage for my whatisonthe.tv project.
+The webpage for my whatisonthe.tv project. Just a placeholder for now.
 
 ## Links
 
@@ -28,3 +28,6 @@ cd whatisonthe.tv
 make run
 ```
 
+## Deploy
+
+```make deploy```
