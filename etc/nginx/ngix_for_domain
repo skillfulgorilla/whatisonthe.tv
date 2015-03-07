@@ -1,9 +1,30 @@
-server {
-    listen 80;
-    server_name whatisonthe.tv www.whatisonthe.tv;
-    root /var/www/www.whatisonthe.tv/;
-    index index.html index.htm;
+upstream demo_server {
+        server unix:/var/run/demo.whatisonthetv.sock fail_timeout=0;
+}
 
-    location / {
-    }
+server {
+        listen 80;
+        server_name "";
+
+        client_max_body_size 500M;
+
+        access_log /var/log/demo.whatisonthe.tv/access.log;
+        error_log /var/log/demo.whatisonthe.tv/error.log;
+
+        location / {
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+                proxy_redirect off;
+
+                if (!-f $request_filename) {
+                    proxy_pass http://demo_server;
+                    break;
+                }
+        }
+
+        # Error pages
+        error_page 500 502 503 504 /500.html;
+        location = /500.html {
+            root /var/www/apps/static/;
+        }
 }
