@@ -25,9 +25,4 @@ The webpage for my whatisonthe.tv project. Just a placeholder for now.
 ```
 git clone https://github.com/swmcc/whatisonthe.tv.git 
 cd whatisonthe.tv 
-make run
 ```
-
-## Deploy
-
-```make deploy```
