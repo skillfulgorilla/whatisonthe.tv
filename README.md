@@ -1,5 +1,7 @@
 # whatisonthe.tv 
 
+[ ![Codeship Status for swmcc/whatisonthe.tv](https://codeship.com/projects/a6654d10-9f6d-0132-84c6-520a26f6f18f/status?branch=master)](https://codeship.com/projects/65171)
+
 **what·isonthetv**  */ˈwhatˌisonthetv/*
 
 *Noun:*  
