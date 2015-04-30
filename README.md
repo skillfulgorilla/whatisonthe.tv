@@ -14,6 +14,12 @@ A set for receiving television broadcasts.
 
 A brochure for the whatisonthe.tv project. Just a placeholder for now.
 
+## Deployment
+
+Automatically deployed with [codeship](http://www.codeship.com).
+
+```rsync -av * root@alatar.skillfulgorilla.com://var/www/www.whatisonthe.tv/```
+
 ## Links
 
 [www.whatisonthe.tv](http://www.whatisonthe.tv) 
