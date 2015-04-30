@@ -18,7 +18,7 @@ A brochure for the whatisonthe.tv project. Just a placeholder for now.
 
 Automatically deployed with [codeship](http://www.codeship.com).
 
-```rsync -av * root@alatar.skillfulgorilla.com://var/www/www.whatisonthe.tv/```
+See the [scripts/](https://github.com/swmcc/whatisonthe.tv/scripts/) directory for details.
 
 ## Links
 
